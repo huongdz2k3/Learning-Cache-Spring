@@ -1,0 +1,2 @@
+MySQL cmd : docker run -d --rm --name LearningCache -e MYSQL_ROOT_PASSWORD=123456 -e MYSQL_USER=huongbui -e MYSQL_PASSWORD=123456 -e MYSQL_DATABASE=LearningCache -p 3306:3306 --volume LearningCache-volume:/var/lib/mysql mysql
+Redis cmd : docker run -d --name LearningCache -p 6379:6379
