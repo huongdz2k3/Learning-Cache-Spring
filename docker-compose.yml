@@ -1,0 +1,35 @@
+version: '3'
+
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  docker-mysql:
+    image: mysql:latest
+    networks:
+      - app-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_USER=huongbui
+      - MYSQL_PASSWORD=123456
+      - MYSQL_DATABASE=LearningCache
+    ports:
+      - 3306:3306
+
+  docker-redis:
+    image: redis:latest
+    networks:
+      - app-network
+    ports:
+      - 6379:6379
+
+  app:
+    image: app:latest
+    networks:
+      - app-network
+    ports:
+      - 8080:8080
+    depends_on:
+      - docker-mysql
+      - docker-redis
